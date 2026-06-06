@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Host Grotesk';
+    src: url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap');
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-aerovue-grey-white text-aerovue-grey-900 font-host-grotesk antialiased;
+  }
+}
+
+@layer components {
+  /* ===== Framer-Style Scroll Reveal ===== */
+
+  /* Initial hidden state for all scroll animations */
+  .scroll-hidden {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Base visible state */
+  .scroll-visible {
+    opacity: 1;
+  }
+
+  /* Direction: Up - slides up with fade */
+  .scroll-reveal-up {
+    animation: scrollRevealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealUp {
+    0% {
+      opacity: 0;
+      transform: translateY(var(--scroll-distance, 50px));
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Direction: Down - slides down with fade */
+  .scroll-reveal-down {
+    animation: scrollRevealDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealDown {
+    0% {
+      opacity: 0;
+      transform: translateY(calc(var(--scroll-distance, 50px) * -1));
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Direction: Left - slides from left */
+  .scroll-reveal-left {
+    animation: scrollRevealLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(calc(var(--scroll-distance, 50px) * -1));
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Direction: Right - slides from right */
+  .scroll-reveal-right {
+    animation: scrollRevealRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealRight {
+    0% {
+      opacity: 0;
+      transform: translateX(var(--scroll-distance, 50px));
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Direction: Scale - scales up with fade */
+  .scroll-reveal-scale {
+    animation: scrollRevealScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Direction: Fade - simple fade in */
+  .scroll-reveal-fade {
+    animation: scrollRevealFade 0.6s ease-out var(--scroll-delay, 0ms) both;
+  }
+
+  @keyframes scrollRevealFade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* ===== Hover Effects ===== */
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    @apply shadow-lg;
+  }
+
+  .hover-scale {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.03);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 91, 4, 0.15);
+  }
+
+  /* ===== Button Edge ===== */
+  .button-edge {
+    @apply flex flex-row items-stretch;
+  }
+
+  .button-edge-side {
+    @apply relative;
+    width: 12px;
+  }
+
+  .button-body {
+    @apply flex items-center justify-center px-[38px] py-[16px];
+  }
+
+  /* ===== Image Zoom on Hover ===== */
+  .img-zoom {
+    overflow: hidden;
+  }
+
+  .img-zoom img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .img-zoom:hover img {
+    transform: scale(1.08);
+  }
+
+  /* ===== Card ===== */
+  .card-hover {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(16, 54, 125, 0.1);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #10367D, #FF5B04);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
